@@ -4,7 +4,8 @@ MAINTAINER AbdoulAFall (abdoulazizfall2@gmail.com)
 
 COPY student_age.py /root/
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update \
+    apt-get install -y \
     python-dev \
     python3-dev \
     libsasl2-dev \
