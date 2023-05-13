@@ -1,0 +1,34 @@
+version: '3.9'
+services:
+
+  web:
+    image: php:apache
+    environment:
+      - PASSWORD_FILE=/secrets/apache_password
+    secrets:
+      - apache_password
+    volumes:
+      - ./website:/var/www/html
+    depends_on:
+      - api
+    ports:
+      - "8080:80"
+    networks:
+    - reseauprive
+  
+  api:
+    image: studentageapi:v1
+    volumes:
+      - ./student_age.json:/student_age.json
+    ports:
+      - "5000:80"
+    networks:
+    - reseauprive
+
+networks:
+  reseauprive:
+volumes:
+  student_age:
+secrets:
+  apache_password:
+    file: apache_pass
