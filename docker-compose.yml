@@ -5,11 +5,8 @@ services:
     image: php:apache
     environment:
       PASSWORD_FILE: /secrets/apache_password
-      MYSQL_DB_CONNECTION: test
-      MYSQL_DB_NAME: test
-      MYSQL_USER: test
-      MYSQL_PASSWORD: test
-      site url:
+      USERNAME: test
+      PASSWORD: test
     secrets:
       - apache_password
     volumes:
