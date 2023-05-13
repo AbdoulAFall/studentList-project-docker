@@ -4,7 +4,12 @@ services:
   web:
     image: php:apache
     environment:
-      - PASSWORD_FILE=/secrets/apache_password
+      PASSWORD_FILE: /secrets/apache_password
+      MYSQL_DB_CONNECTION: test
+      MYSQL_DB_NAME: test
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+      site url:
     secrets:
       - apache_password
     volumes:
