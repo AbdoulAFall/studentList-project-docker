@@ -11,7 +11,7 @@ RUN apt-get update \
     libsasl2-dev \
     libldap2-dev \
     libssl-dev \
-    && pip install flask==1.1.2 \
+    pip install flask==1.1.2 \
     flask_httpauth==4.1.0 \
     flask_simpleldap \
     python-dotenv==0.14.0
