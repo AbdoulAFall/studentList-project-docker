@@ -4,8 +4,8 @@ services:
   web:
     image: php:apache
     environment:
-      USERNAME: test
-      PASSWORD: test
+      USERNAME: toto
+      PASSWORD: python
     hostname: web 
     secrets:
       - apache_password
