@@ -4,9 +4,9 @@ services:
   web:
     image: php:apache
     environment:
-      PASSWORD_FILE: /secrets/apache_password
       USERNAME: test
       PASSWORD: test
+    hostname: web 
     secrets:
       - apache_password
     volumes:
@@ -22,6 +22,9 @@ services:
     image: studentageapi:v1
     volumes:
       - ./student_age.json:/student_age.json
+    environment:
+      username: ${USERNAME}
+      password: ${PASSWORD}
     ports:
       - "5000:80"
     networks:
