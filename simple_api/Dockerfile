@@ -19,6 +19,6 @@ RUN apt-get update && apt-get install -y \
     
 VOLUME /myvolume
 
-EXPOSE 5000
+#EXPOSE 5000
 
 CMD [ "python", "./student_age.py" ]      
