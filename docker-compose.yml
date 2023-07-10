@@ -1,40 +1,54 @@
 version: '3.9'
 services:
 
-  web:
+  ihm:
     image: php:apache
+    container_name: ihm
     environment:
       USERNAME: toto
       PASSWORD: python
-    hostname: web 
-    secrets:
-      - apache_password
     volumes:
       - ./website:/var/www/html
     depends_on:
-      - api
+      - studentlist
     ports:
       - "8080:80"
     networks:
     - reseauprive
   
-  api:
+  studentlist:
+    container_name: studentlist
     image: studentageapi:v1
     volumes:
-      - ./student_age.json:/student_age.json
-    environment:
-      username: ${USERNAME}
-      password: ${PASSWORD}
-    ports:
-      - "5000:80"
+      - '$PWD/simple_api/student_age.json:/data/student_age.json'
     networks:
     - reseauprive
-    restart: always
+    
+  registry:
+    container_name: registry
+    image: registry:2
+    ports:
+      - '9500:5000'
+    networks:
+    - registry
+  
+  registry-ui:
+    image: joxit/docker-registry-ui:main
+    depends_on: 	
+      - registry
+    ports:
+      - 80:80
+    networks:
+      - registry
+    environment:
+      - REGISTRY_URL="http://registry:9500"
+      - REGISTRY_TITLE=Docker Registry UI
+      - NGINX_PROXY_PASS_URL=http://registry:5000
+      - DELETE_IMAGES=true
+      - SINGLE_REGISTRY=true
+      - CATALOG_ELEMENTS_LIMIT=10
+
 
 networks:
   reseauprive:
-volumes:
-  student_age:
-secrets:
-  apache_password:
-    file: apache_pass
+  registry:
