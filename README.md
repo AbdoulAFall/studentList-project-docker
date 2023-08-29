@@ -14,6 +14,7 @@ docker build -t studentageapi:v1 .
 docker run -p 5000:5000 -v data:/student_age.json -d studentageapi:v1
 
 # Start the application
+cd ..
 docker-compose up -d
 ```
 
