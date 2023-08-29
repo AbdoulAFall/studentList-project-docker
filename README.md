@@ -1,6 +1,6 @@
-# Work descripton 
+# Work testing 
 
-To test the work you can open : http://play-with-docker.com/
+To test the work you can open the following link http://play-with-docker.com/ and use the following commands
 
 ```bash
 # Clone this repo locally
