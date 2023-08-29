@@ -1,3 +1,23 @@
+# Work descripton 
+
+To test the work you can open : http://play-with-docker.com/
+
+```bash
+# Clone this repo locally
+git clone https://github.com/AbdoulAFall/studentList-project-docker
+cd studentList-project-docker/simple_api 
+
+# Build the api first
+docker build -t studentageapi:v1 .
+
+# Verify the Docker daemon is running
+docker run -p 5000:5000 -v data:/student_age.json -d studentageapi:v1
+
+# Start the application
+docker-compose up -d
+```
+
+
 # student-list 
 This repo is a simple application to list student with a webserver (PHP) and API (Flask)
 
